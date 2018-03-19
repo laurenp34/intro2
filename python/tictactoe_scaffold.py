@@ -10,11 +10,24 @@ def drawBoard():
     print('-----------')
     print(' ' + str(board[2][0]) + ' | ' + str(board[2][1]) + ' | ' + str(board[2][2]))
     if gameOver:
+        print OutcomeCheck(board)
         # print who won the game?
-    else:
+	else:
+    	global move
+    	move = input("Where do you want to place your piece?")
+		global occupied
+        occupied = []
+        while move >= 1 and move <= 9 and not move in occupied:
+      	    move = input("Where do you want to place your piece?")
+        
         # ask for player input
 
 def switchTurn():
+		global currentPlayer
+		currentPlayer = "X" 
+		
+		
+		
     # what globals do you need here?
     # what do you need to change?
 
@@ -64,3 +77,35 @@ def playGame():
         checkWinner()
 
 playGame()
+
+
+
+
+def OutcomeCheck(matrix):
+	hor_cheker
+	vert_cheker
+	dia_cheker1
+	dia_cheker2
+	return "Tie"
+	
+def hor_cheker(matrix):
+	row = 0
+	while row < len(matrix):
+		if matrix[row][0] == matrix[row][1] and matrix[row][1] == matrix[row][2]:
+			return matrix[row][2]
+		row += 1
+
+def vert_cheker(matrix):
+	col = 0
+	while col < len(matrix):
+		if matrix[0][col] == matrix[1][col] and matrix[1][col] == matrix[2][col]:
+			return matrix[0][col]
+		col += 1
+
+def dia_cheker1(matrix):
+	if matrix[0][0] == matrix[1][1] and matrix[1][1] == matrix[2][2]:
+		return matrix[0][0]
+
+def dia_cheker2(matrix):
+	if matrix[0][2] == matrix[1][1] and matrix[1][1] == matrix[2][0]:
+		return matrix[0][2]
